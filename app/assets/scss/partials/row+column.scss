@@ -1,0 +1,30 @@
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	max-width: $width-row;
+	margin: 0 auto;
+
+	.column {
+		flex: 1;
+		min-width: 0;
+	}
+
+	&,
+	.column {
+		@each $breakpoint, $gutter in $grid-column-gutter {
+			@include breakpoint($breakpoint up) {
+				padding: 0 rem(math.div($gutter, 2));
+			}
+		}
+	}
+
+	.row,
+	.column .column {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+
+

@@ -1,0 +1,80 @@
+// split string (for breakpoint mixin)
+@function str-split($string, $separator) {
+	$string: '#{$string}';
+
+	// empty array/list
+	$split-arr: ();
+
+	// first index of separator in string
+	$index: string.index($string, $separator);
+
+	// loop through string
+	@while $index != null {
+		// get the substring from the first character to the separator
+
+		$item: string.slice($string, 1, $index - 1);
+
+		// push item to array
+		$split-arr: list.append($split-arr, $item);
+
+		// remove item and separator from string
+		$string: string.slice($string, $index + 1);
+
+		// find new index of separator
+		$index: string.index($string, $separator);
+	}
+
+	// add the remaining string to list (the last item)
+	$split-arr: list.append($split-arr, $string);
+
+	@return $split-arr;
+}
+
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return math.div($number, ($number * 0 + 1));
+	}
+
+	@return $number;
+}
+
+// reverse scss array
+@function reverse($list, $recursive: false) {
+	$result: ();
+
+	@for $i from length($list) * -1 through -1 {
+		@if type-of(list.nth($list, math.abs($i))) == list and $recursive {
+			$result: list.append($result, reverse(list.nth($list, math.abs($i)), $recursive));
+		} @else {
+			$result: list.append($result, list.nth($list, math.abs($i)));
+		}
+	}
+
+	@return $result;
+}
+
+// get spacer, for negative value: spacer(-xxl);
+@function spacer($name: sm) {
+	$sign: 1;
+
+	@if string.index($name, '-') == 1 {
+		$sign: -1;
+		$name: string.slice($name, 2);
+	}
+
+	@return $sign * map_get($vertical-rhythm-spacers, $name);
+}
+
+// get rems from pxs
+@function rem($size) {
+	$rem-size: math.div($size, 16);
+
+	@return $rem-size * 1rem;
+}
+
+// get ems from pxs with base defined
+@function em($size, $base) {
+	$em-size: math.div($size, $base);
+
+	@return $em-size * 1em;
+}

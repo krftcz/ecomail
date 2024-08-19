@@ -1,0 +1,60 @@
+// headlines
+@mixin typo-display-default() {
+	margin: 0;
+	font-family: $font-family-heading;
+	font-weight: $font-weight-bold;
+}
+
+// bodycopy
+@mixin typo-bodycopy-default() {
+	font-family: $font-family-bodycopy;
+	font-weight: $font-weight-regular;
+}
+
+@mixin typo($typo) {
+	@if  string.index($typo, 'd') == 1 {
+		@include typo-display-default;
+	} @else if (string.index($typo, 'b')) == 1 {
+		@include typo-bodycopy-default;
+	}
+
+	// headline
+	@if $typo == d1 {
+		font-size: rem(32);
+		line-height: em(44, 32);
+
+		@include breakpoint(sm up) {
+			font-size: rem(54);
+		}
+
+		@include breakpoint(lg up) {
+			font-size: rem(64);
+			line-height: em(86, 64);
+		}
+	}
+
+	@if $typo == d2 {
+		font-size: rem(32);
+		line-height: em(44, 32);
+	}
+
+	// text
+	@if $typo == b1 {
+		font-size: rem(16);
+		line-height: em(30, 16);
+
+		@include breakpoint(sm up) {
+			font-size: rem(18);
+		}
+
+		@include breakpoint(lg up) {
+			font-size: rem(20);
+			line-height: em(34, 20);
+		}
+	}
+
+	@if $typo == b2 {
+		font-size: rem(16);
+		line-height: em(30, 16);
+	}
+}

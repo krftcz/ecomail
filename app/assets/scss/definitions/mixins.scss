@@ -1,0 +1,77 @@
+@mixin background-retina($small, $retina, $width: auto, $height: auto) {
+	background-image: url($small);
+
+	@if  $width == cover or $width == contain {
+		@if  $width != false {
+			background-size: $width;
+		}
+	} @else {
+		@if  $width != false {
+			background-size: $width $height;
+		}
+	}
+
+	@if  $small != $retina {
+		@media only screen and (resolution >= 192dpi), only screen and (resolution >= 2dppx) {
+			background-image: url($retina);
+		}
+	}
+}
+
+@mixin transition-fix() {
+	transform: translate3d(0, 0, 0);
+	backface-visibility: hidden;
+}
+
+@mixin btn-states() {
+	@media (hover: hover) {
+		&:not(.is-disabled):hover,
+		&:not(.is-disabled):focus,
+		a:hover:not(.is-disabled) &:not(.is-disabled),
+		a:focus:not(.is-disabled) &:not(.is-disabled) {
+			@content;
+		}
+	}
+}
+
+@mixin default-transition($properties...) {
+	transition-timing-function: ease-in-out;
+	transition-duration: $transition-duration-default;
+	transition-property: $properties;
+}
+
+@mixin breakpoint($config) {
+	$breakpoint: list.nth(str-split($config, ' '), 1);
+	$direction: list.nth(str-split($config, ' '), 2);
+	$break-dot: 0.01em;
+
+	@if $direction == 'down' {
+		$breakpoint-index: list.index(map.keys($breakpoints), $breakpoint);
+		$next-breakpoint: list.nth(map.values($breakpoints), $breakpoint-index - 1);
+
+		@media (max-width: $next-breakpoint - $break-dot) {
+			@content;
+		}
+	} @else {
+		@media (min-width: map-get($breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+}
+
+@mixin flex-column($columns: 12, $gutter: 0) {
+	min-width: 0;
+
+	@if $columns == auto {
+		flex: 1;
+	} @else {
+		flex: 0 0 math.div($columns, $grid-column-count) * 100%;
+	}
+
+	@each $breakpoint, $gutter in $grid-column-gutter {
+		@include breakpoint($breakpoint up) {
+			padding-right: rem(math.div($gutter, 2));
+			padding-left: rem(math.div($gutter, 2));
+		}
+	}
+}

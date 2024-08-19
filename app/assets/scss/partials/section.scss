@@ -1,0 +1,30 @@
+.section {
+	margin-top: spacer(lg);
+	margin-bottom: spacer(lg);
+
+	@include breakpoint (md up) {
+		margin-top: spacer(xl);
+		margin-bottom: spacer(xl);
+	}
+
+	&__title {
+		@include typo(d1);
+
+		&--small {
+			@include typo(d2);
+		}
+	}
+
+	&__perex {
+		@include typo(b1);
+
+		max-width: rem(700);
+		margin-top: spacer(lg);
+
+		&--small {
+			@include typo(b2);
+
+			margin-top: spacer(md);
+		}
+	}
+}
