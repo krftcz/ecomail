@@ -84,16 +84,20 @@
 	.btn {
 		$this: &;
 
-		@include typo(b1);
-
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		min-width: rem(135);
+		height: rem(56);
+		padding: 0 rem(22);
+		font-size: rem(16);
+		font-weight: $font-weight-bold;
 		text-decoration: none;
-		text-transform: uppercase;
 		cursor: pointer;
 		background: none;
 		border: 0;
+		border-radius: rem(6);
+		transition: $transition-default;
 
 		&__icon {
 			&--right {
@@ -106,17 +110,20 @@
 		}
 
 		&--primary {
-			min-width: rem(200);
-			height: rem(50);
-			padding: 0 spacer(lg);
-			font-size: rem(16);
-			font-weight: $font-weight-bold;
 			color: $color-white;
-			background-color: $color-green;
-			transition: $transition-default;
+			background-color: $color-green-light;
 
 			@include btn-states {
-				background-color: color.adjust($color-green, $lightness: -10%);
+				background-color: color.adjust($color-green-light, $lightness: -5%);
+			}
+		}
+
+		&--secondary {
+			color: $color-green;
+			background-color: $color-green-dim-light;
+
+			@include btn-states {
+				background-color: color.adjust($color-green-dim-light, $lightness: -5%);
 			}
 		}
 	}

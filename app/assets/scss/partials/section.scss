@@ -1,12 +1,4 @@
 .section {
-	margin-top: spacer(lg);
-	margin-bottom: spacer(lg);
-
-	@include breakpoint (md up) {
-		margin-top: spacer(xl);
-		margin-bottom: spacer(xl);
-	}
-
 	&__title {
 		@include typo(d1);
 

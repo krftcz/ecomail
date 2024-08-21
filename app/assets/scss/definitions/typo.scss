@@ -8,7 +8,7 @@
 // bodycopy
 @mixin typo-bodycopy-default() {
 	font-family: $font-family-bodycopy;
-	font-weight: $font-weight-regular;
+	font-weight: $font-weight-medium;
 }
 
 @mixin typo($typo) {
@@ -20,41 +20,32 @@
 
 	// headline
 	@if $typo == d1 {
-		font-size: rem(32);
-		line-height: em(44, 32);
-
-		@include breakpoint(sm up) {
-			font-size: rem(54);
-		}
-
-		@include breakpoint(lg up) {
-			font-size: rem(64);
-			line-height: em(86, 64);
-		}
+		font-size: rem(55);
+		line-height: em(55, 55);
+		letter-spacing: em(-0.2, 55);
 	}
 
 	@if $typo == d2 {
+		font-size: rem(21);
+		line-height: em(23, 32);
+		letter-spacing: em(1.3, 21);
+		text-transform: uppercase;
+	}
+
+	@if $typo == d3 {
 		font-size: rem(32);
-		line-height: em(44, 32);
+		line-height: em(35, 32);
+		letter-spacing: em(-0.2, 32);
 	}
 
 	// text
 	@if $typo == b1 {
-		font-size: rem(16);
-		line-height: em(30, 16);
-
-		@include breakpoint(sm up) {
-			font-size: rem(18);
-		}
-
-		@include breakpoint(lg up) {
-			font-size: rem(20);
-			line-height: em(34, 20);
-		}
+		font-size: rem(21);
+		line-height: em(30, 21);
 	}
 
 	@if $typo == b2 {
 		font-size: rem(16);
-		line-height: em(30, 16);
+		line-height: em(23, 16);
 	}
 }

@@ -67,11 +67,4 @@
 	} @else {
 		flex: 0 0 math.div($columns, $grid-column-count) * 100%;
 	}
-
-	@each $breakpoint, $gutter in $grid-column-gutter {
-		@include breakpoint($breakpoint up) {
-			padding-right: rem(math.div($gutter, 2));
-			padding-left: rem(math.div($gutter, 2));
-		}
-	}
 }

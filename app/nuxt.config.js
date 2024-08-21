@@ -25,7 +25,8 @@ const nuxtConfig = {
 		'@nuxtjs/stylelint-module',
 		'@nuxtjs/eslint-module',
 		'@nuxtjs/device',
-		'@vueuse/nuxt'
+		'@vueuse/nuxt',
+		'@nuxtjs/google-fonts'
 	],
 
 	device: {
@@ -46,6 +47,15 @@ const nuxtConfig = {
 		'normalize.css',
 		`~/assets/scss/common.scss`
 	],
+
+	googleFonts: {
+		families: {
+			Inter: {
+				wght: [400, 500, 700, 900]
+			}
+		},
+		subsets: ['latin', 'latin-ext']
+	},
 
 	nitro: {
 		baseURL: process.env.NUXT_APP_BASE_URL

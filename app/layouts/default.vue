@@ -2,13 +2,9 @@
 	<div class="layout">
 		<dev-grid v-if="config.public.appDebug" />
 
-		<common-header />
-
 		<div class="layout__content">
 			<slot />
 		</div>
-
-		<common-footer />
 	</div>
 </template>
 

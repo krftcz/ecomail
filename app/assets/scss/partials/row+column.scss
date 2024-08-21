@@ -4,27 +4,27 @@
 	width: 100%;
 	max-width: $width-row;
 	margin: 0 auto;
+	padding: 0 rem(14);
+
+	@include breakpoint(sm up) {
+		padding: 0 rem(48);
+	}
+
+	@include breakpoint(md up) {
+		padding: 0 rem(16);
+	}
 
 	.column {
 		flex: 1;
 		min-width: 0;
-	}
+		padding: 0 rem(14);
 
-	&,
-	.column {
-		@each $breakpoint, $gutter in $grid-column-gutter {
-			@include breakpoint($breakpoint up) {
-				padding: 0 rem(math.div($gutter, 2));
-			}
+		@include breakpoint(sm up) {
+			padding: 0 rem(14);
+		}
+
+		@include breakpoint(md up) {
+			padding: 0 rem(16);
 		}
 	}
-
-	.row,
-	.column .column {
-		padding-right: 0;
-		padding-left: 0;
-	}
 }
-
-
-

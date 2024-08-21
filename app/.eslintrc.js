@@ -20,6 +20,7 @@ module.exports = {
 		'import/no-extraneous-dependencies': 'off',
 		// nuxt
 		'nuxt/no-cjs-in-config': 'off',
+		'consistent-return': 'off',
 		semi: ['warn', 'always'],
 
 		// own for ES6

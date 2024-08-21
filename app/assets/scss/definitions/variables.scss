@@ -1,36 +1,45 @@
 // colors
-$color-white: #ffffff;
+$color-white: #FFFFFF;
 $color-black: #000000;
-$color-grey: #666666;
-$color-green: #41b883;
+$color-green: #024E40;
+$color-green-light: #7FC109;
+$color-green-dim: #61908E;
+$color-green-dim-light: #AAE8C3;
+$color-yellow: #FEE694;
+$color-grey: #E7E7E7;
+$color-grey-greenish: #BFDBDC; // placeholder under images
 
 // borders
 $border-radius-default: 2px;
 
 // typo (specific typo combination like headings or bodycopy define in `typo.scss`)
-$font-weight-light: 300;
 $font-weight-regular: 400;
+$font-weight-medium: 500;
 $font-weight-bold: 700;
 $font-weight-black: 900;
-$font-family-bodycopy: helvetica, arial, sans-serif;
-$font-family-heading: helvetica, arial, sans-serif;
+
+$font-family-bodycopy: "Inter", sans-serif;
+$font-family-heading: "Inter", sans-serif;
 $font-size-base: 16;
 
 // vertical rhythm; use `spacer(lg);` custom scss function
 $vertical-rhythm-base: 1rem; // expecting default browser font-size is 16px
 $vertical-rhythm-spacers: (
-	xxs: $vertical-rhythm-base * 0.25, // 4px
-	xs: $vertical-rhythm-base * 0.5, // 8px
-	sm: $vertical-rhythm-base * 1, // 16px
-	md: $vertical-rhythm-base * 1.5, // 24px
-	lg: $vertical-rhythm-base * 2, // 32px
-	xl: $vertical-rhythm-base * 4, // 64px
-	xxl: $vertical-rhythm-base * 6 // 96px
+	xxs: rem(16),
+	xs: rem(28),
+	sm: rem(32),
+	md: rem(40),
+	lg: rem(48),
+	xl: rem(60),
+	xxl: rem(120),
+	xxxl: rem(160),
 );
 
 // dimensions
-$width-row: rem(1200);
-$height-header: rem(70);
+$width-row: rem(1298);
+
+$border-radius-default: rem(16);
+$border-radius-small: rem(6);
 
 // transitions
 $transition-duration-default: 0.3s;
@@ -46,11 +55,8 @@ $breakpoints: (
 	xs: em(460, $font-size-base),
 	xxs: em(0, $font-size-base)
 );
-$grid-column-count: 12;
-$grid-column-gutter: (
-	xxs: 20,
-	md: 30
-);
 
 // z-indexes
 $zindex-header: 1000;
+
+$grid-column-count: 12;

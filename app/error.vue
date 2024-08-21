@@ -17,14 +17,14 @@
 						{{ error.description }}
 					</p>
 
-					<partials-button
+					<partial-button
 						v-if="props.error.statusCode === 404"
 						:to="$routes.path('page.index')"
 						type="primary"
 						class="error__button"
 					>
 						Back to home
-					</partials-button>
+					</partial-button>
 				</div>
 			</div>
 		</div>
@@ -71,8 +71,6 @@
 		}
 
 		&__icon-wrap {
-			@include flex-column(4);
-
 			display: flex;
 			align-items: center;
 			justify-content: center;
