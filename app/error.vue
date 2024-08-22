@@ -66,6 +66,8 @@
 
 <style lang="scss" scoped>
 	.error {
+		padding: spacer(xl) 0;
+
 		&__description {
 			@include typo(b1);
 		}

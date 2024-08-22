@@ -50,6 +50,8 @@
 </template>
 
 <script setup>
+	const {device} = useWebpage();
+
 	const products = reactive([]);
 	const perPage = 6;
 	const page = ref(1);
@@ -113,11 +115,20 @@
 <style lang="scss" scoped>
 	.products {
 		padding: 0 0 spacer(xxl);
-		margin: 0;
+		margin: spacer(xl) 0 0;
+
+		@include breakpoint(md up) {
+			margin: 0;
+		}
 
 		&__filter {
 			display: flex;
 			gap: spacer(xxs);
+			justify-content: center;
+
+			@include breakpoint(sm up) {
+				justify-content: flex-start;
+			}
 
 			&-item {
 				display: flex;
@@ -136,17 +147,33 @@
 		}
 
 		&__content {
-			gap: spacer(sm) 0;
+			gap: spacer(xs) 0;
 			margin-top: spacer(xl);
+
+			@include breakpoint(sm up) {
+				gap: spacer(sm) 0;
+			}
 		}
 
 		&__item {
-			@include flex-column(4);
+			@include flex-column(12);
+
+			@include breakpoint(sm up) {
+				@include flex-column(6);
+			}
+
+			@include breakpoint(md up) {
+				@include flex-column(4);
+			}
 		}
 
 		&__more {
-			margin-top: spacer(xxl);
+			margin-top: spacer(xl);
 			text-align: center;
+
+			@include breakpoint(md up) {
+				margin-top: spacer(xxl);
+			}
 
 			&-done {
 				@include typo(b1);

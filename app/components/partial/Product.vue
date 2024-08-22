@@ -1,19 +1,29 @@
 <template>
 	<div class="product">
 		<div class="product__rating">
-			{{ product.rating.rate }}/5
+			{{ productRating() }}
 		</div>
 
 		<div class="product__image">
-			<img :src="`images/${getCategory(product.category)}.jpg`" alt="" />
+			<partial-image
+				:x1="`images/${categoryImage()}.jpg`"
+				:x2="`images/${categoryImage()}@2x.jpg`"
+				:alt="product.title"
+			/>
 		</div>
 
 		<div class="product__content">
-			<h2 class="product__title">
-				{{ props.product.title }}
-			</h2>
+			<h2
+				class="product__title"
+				:title="props.product.title.length > 60 ? props.product.title : null"
+				v-html="truncatedTitle()"
+			/>
 
-			<p class="product__perex" v-html="truncatePerex(props.product.description)" />
+			<p
+				class="product__perex"
+				:title="props.product.description.length > 142 ? props.product.description : null"
+				v-html="truncatedPerex()"
+			/>
 
 			<partial-button
 				type="primary"
@@ -35,8 +45,16 @@
 		}
 	});
 
-	const getCategory = (category) => {
-		switch (category) {
+	const truncateString = (string, chars) => (string.length > chars ? `${string.substring(0, chars)}&hellip;` : string);
+
+	const truncatedTitle = () => truncateString(props.product.title, 60);
+
+	const truncatedPerex = () => truncateString(props.product.description, 142);
+
+	const productRating = () => `${props.product.rating.rate.toString().replace('.', ',')}/5`;
+
+	const categoryImage = () => {
+		switch (props.product.category) {
 			case 'women\'s clothing':
 				return 'woman-clothes';
 			case 'men\'s clothing':
@@ -49,14 +67,6 @@
 				return 'unknown';
 		}
 	};
-
-	const truncatePerex = (perex) => {
-		if (perex.length > 142) {
-			return `${perex.substring(0, 142)}&hellip;`;
-		}
-
-		return perex;
-	};
 </script>
 
 <style lang="scss" scoped>
@@ -64,7 +74,9 @@
 		position: relative;
 		display: flex;
 		flex-direction: column;
+		max-width: rem(392);
 		height: 100%;
+		margin: 0 auto;
 		overflow: hidden;
 		border-radius: $border-radius-default;
 
@@ -92,12 +104,15 @@
 			flex: 1;
 			flex-direction: column;
 			align-items: flex-start;
-			padding: spacer(md);
+			padding: spacer(sm);
 			background: linear-gradient(to bottom, $color-white, $color-grey);
 		}
 
 		&__title {
 			@include typo(d3);
+
+			max-width: 100%;
+			word-break: break-word;
 		}
 
 		&__perex {

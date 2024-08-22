@@ -2,8 +2,8 @@
 const breakpoints = [
 	{layout: 'xxs',	from: 0,	to: 459,	layoutGroup: 'phone'},
 	{layout: 'xs',	from: 460,	to: 639,	layoutGroup: 'phone'},
-	{layout: 'sm',	from: 640,	to: 979,	layoutGroup: 'tablet'},
-	{layout: 'md',	from: 980,	to: 1279,	layoutGroup: 'tablet'},
+	{layout: 'sm',	from: 640,	to: 939,	layoutGroup: 'tablet'},
+	{layout: 'md',	from: 940,	to: 1279,	layoutGroup: 'desktop'},
 	{layout: 'lg',	from: 1280,	to: 1599,	layoutGroup: 'desktop'},
 	{layout: 'xl',	from: 1600,	to: 1919,	layoutGroup: 'desktop'},
 	{layout: 'xxl',	from: 1920,	to: 99999,	layoutGroup: 'desktop'}

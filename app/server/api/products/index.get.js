@@ -7,10 +7,6 @@ export default defineEventHandler(async (event) => {
 	try {
 		const response = await fetch('https://fakestoreapi.com/products');
 
-		if (!response.ok) {
-			throw new Error('Failed to fetch data from external API');
-		}
-
 		const allProducts = await response.json();
 
 		const sortedProducts = allProducts.sort((a, b) => {

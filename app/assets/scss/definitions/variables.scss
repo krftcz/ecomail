@@ -18,8 +18,8 @@ $font-weight-medium: 500;
 $font-weight-bold: 700;
 $font-weight-black: 900;
 
-$font-family-bodycopy: "Inter", sans-serif;
-$font-family-heading: "Inter", sans-serif;
+$font-family-bodycopy: 'Inter', sans-serif;
+$font-family-heading: 'Inter', sans-serif;
 $font-size-base: 16;
 
 // vertical rhythm; use `spacer(lg);` custom scss function
@@ -50,7 +50,7 @@ $breakpoints: (
 	xxl: em(1920, $font-size-base),
 	xl: em(1600, $font-size-base),
 	lg: em(1280, $font-size-base),
-	md: em(980, $font-size-base),
+	md: em(940, $font-size-base),
 	sm: em(640, $font-size-base),
 	xs: em(460, $font-size-base),
 	xxs: em(0, $font-size-base)
