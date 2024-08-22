@@ -1,11 +1,13 @@
 export default defineEventHandler(async (event) => {
+	const config = useRuntimeConfig(event);
+
 	const {page = 1, limit = 6, sort = 'best'} = getQuery(event);
 
 	const pageNumber = parseInt(page, 10);
 	const pageSize = parseInt(limit, 10);
 
 	try {
-		const response = await fetch('https://fakestoreapi.com/products');
+		const response = await fetch(`${config.public.apiBase}/products`);
 
 		const allProducts = await response.json();
 

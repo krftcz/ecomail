@@ -17,7 +17,8 @@ const nuxtConfig = {
 	runtimeConfig: {
 		public: {
 			appDebug: process.env.APP_DEBUG === 'true',
-			siteName: process.env.NUXT_SITE_NAME
+			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
+			apiBase: process.env.NUXT_PUBLIC_API_BASE
 		}
 	},
 
@@ -84,15 +85,6 @@ const nuxtConfig = {
 		}
 	}
 };
-
-if (process.env.WEBLOCK_ENABLED === 'true') {
-	nuxtConfig.modules.push('nuxt-weblock');
-
-	nuxtConfig.webLock = {
-		password: process.env.WEBLOCK_PASSWORD,
-		isEnabled: true
-	};
-}
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig(nuxtConfig);
